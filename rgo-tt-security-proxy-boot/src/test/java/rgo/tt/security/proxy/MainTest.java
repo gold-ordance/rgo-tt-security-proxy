@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 class MainTest {
 
-    private static final int PORT = 8082;
+    private static final int PORT = 8079;
     private static final String HOST = "http://127.0.0.1:" + PORT;
 
     private static final String LIVENESS_URL = HOST + "/internal/liveness";
