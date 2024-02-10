@@ -13,19 +13,19 @@
     <artifactId>rgo-tt-security-proxy-internal-api</artifactId>
 
     <dependencies>
+        <!-- self-modules -->
+        <dependency>
+            <groupId>ru.gold.ordance</groupId>
+            <artifactId>rgo-tt-security-proxy-common</artifactId>
+        </dependency>
+        <!-- self-modules -->
+
         <!-- external modules -->
         <dependency>
             <groupId>ru.gold.ordance</groupId>
             <artifactId>rgo-tt-common-utils</artifactId>
         </dependency>
         <!-- external modules -->
-
-        <!-- utils -->
-        <dependency>
-            <groupId>com.fasterxml.jackson.datatype</groupId>
-            <artifactId>jackson-datatype-jsr310</artifactId>
-        </dependency>
-        <!-- utils -->
 
         <!-- test -->
         <dependency>

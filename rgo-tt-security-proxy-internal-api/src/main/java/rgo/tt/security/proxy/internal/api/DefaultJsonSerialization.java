@@ -1,37 +1,28 @@
 package rgo.tt.security.proxy.internal.api;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import rgo.tt.security.proxy.common.om.DefaultObjectMapperProvider;
+import rgo.tt.security.proxy.common.om.ObjectMapperProvider;
+import rgo.tt.security.proxy.common.om.exception.JsonRuntimeException;
 
 public class DefaultJsonSerialization implements JsonSerialization {
 
-    private final ObjectMapper om;
+    private final ObjectMapperProvider provider;
 
-    public DefaultJsonSerialization(ObjectMapper om) {
-        this.om = om;
+    public DefaultJsonSerialization(ObjectMapperProvider provider) {
+        this.provider = provider;
     }
 
     public DefaultJsonSerialization() {
-        om = new ObjectMapper()
-                .registerModule(new JavaTimeModule())
-                .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        provider = new DefaultObjectMapperProvider();
     }
 
     @Override
     public String json(Object o) {
         try {
-            return om.writeValueAsString(o);
+            return provider.getObjectMapper().writeValueAsString(o);
         } catch (JsonProcessingException e) {
             throw new JsonRuntimeException("Serialization failed. object=" + o, e);
-        }
-    }
-
-    public static class JsonRuntimeException extends RuntimeException {
-
-        public JsonRuntimeException(String message, Throwable cause) {
-            super(message, cause);
         }
     }
 }

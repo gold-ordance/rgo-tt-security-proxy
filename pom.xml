@@ -20,6 +20,7 @@
     <modules>
         <module>rgo-tt-security-proxy-boot</module>
         <module>rgo-tt-security-proxy-internal-api</module>
+        <module>rgo-tt-security-proxy-common</module>
     </modules>
 
     <properties>
@@ -30,6 +31,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- self-modules -->
+            <dependency>
+                <groupId>ru.gold.ordance</groupId>
+                <artifactId>rgo-tt-security-proxy-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <!-- self-modules -->
+
             <!-- external modules -->
             <dependency>
                 <groupId>ru.gold.ordance</groupId>
