@@ -5,15 +5,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-public class DefaultResponseJsonSerialization implements ResponseJsonSerialization {
+public class DefaultJsonSerialization implements JsonSerialization {
 
     private final ObjectMapper om;
 
-    public DefaultResponseJsonSerialization(ObjectMapper om) {
+    public DefaultJsonSerialization(ObjectMapper om) {
         this.om = om;
     }
 
-    public DefaultResponseJsonSerialization() {
+    public DefaultJsonSerialization() {
         om = new ObjectMapper()
                 .registerModule(new JavaTimeModule())
                 .setSerializationInclusion(JsonInclude.Include.NON_NULL);

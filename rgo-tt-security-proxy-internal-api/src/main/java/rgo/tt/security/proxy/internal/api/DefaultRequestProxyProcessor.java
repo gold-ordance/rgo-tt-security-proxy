@@ -8,12 +8,12 @@ public class DefaultRequestProxyProcessor implements RequestProxyProcessor {
 
     private final ServiceInvoker serviceInvoker;
     private final RequestVerificationChain verificationChain;
-    private final ResponseJsonSerialization serialization;
+    private final JsonSerialization serialization;
 
     public DefaultRequestProxyProcessor(
             ServiceInvoker serviceInvoker,
             RequestVerificationChain verificationChain,
-            ResponseJsonSerialization serialization
+            JsonSerialization serialization
     ) {
         this.serviceInvoker = serviceInvoker;
         this.verificationChain = verificationChain;

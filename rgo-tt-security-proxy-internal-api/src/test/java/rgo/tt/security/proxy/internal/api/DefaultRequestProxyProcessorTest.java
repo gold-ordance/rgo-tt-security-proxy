@@ -26,7 +26,7 @@ class DefaultRequestProxyProcessorTest {
 
     @BeforeEach
     void setUp() {
-        DefaultResponseJsonSerialization serialization = new DefaultResponseJsonSerialization();
+        DefaultJsonSerialization serialization = new DefaultJsonSerialization();
         proxy = new DefaultRequestProxyProcessor(serviceInvoker, verificationChain, serialization);
     }
 

@@ -7,13 +7,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static rgo.tt.common.utils.RandomUtils.randomPositiveInteger;
 import static rgo.tt.common.utils.RandomUtils.randomString;
 
-class DefaultResponseJsonSerializationTest {
+class DefaultJsonSerializationTest {
 
-    private DefaultResponseJsonSerialization serialization;
+    private DefaultJsonSerialization serialization;
 
     @BeforeEach
     void setUp() {
-        serialization = new DefaultResponseJsonSerialization();
+        serialization = new DefaultJsonSerialization();
     }
 
     @Test
