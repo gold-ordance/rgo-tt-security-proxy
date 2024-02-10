@@ -11,7 +11,7 @@ public final class DataGenerator {
     }
 
     public static Request randomRequest() {
-        return Request.of(randomString(), randomString());
+        return Request.of(randomString(), RequestMeta.of(), randomString());
     }
 
     public static PassedVerificationResponse passed() {
