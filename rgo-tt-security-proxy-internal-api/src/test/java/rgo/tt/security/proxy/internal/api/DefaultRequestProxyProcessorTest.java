@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import rgo.tt.security.proxy.common.om.DefaultObjectMapperProvider;
 import rgo.tt.security.proxy.internal.api.invoker.ServiceInvoker;
 import rgo.tt.security.proxy.internal.api.verification.RequestVerificationChain;
 
@@ -26,7 +27,7 @@ class DefaultRequestProxyProcessorTest {
 
     @BeforeEach
     void setUp() {
-        DefaultJsonSerialization serialization = new DefaultJsonSerialization();
+        DefaultJsonSerialization serialization = new DefaultJsonSerialization(new DefaultObjectMapperProvider());
         proxy = new DefaultRequestProxyProcessor(serviceInvoker, verificationChain, serialization);
     }
 

@@ -2,6 +2,7 @@ package rgo.tt.security.proxy.internal.api;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import rgo.tt.security.proxy.common.om.DefaultObjectMapperProvider;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static rgo.tt.common.utils.RandomUtils.randomPositiveInteger;
@@ -13,7 +14,7 @@ class DefaultJsonSerializationTest {
 
     @BeforeEach
     void setUp() {
-        serialization = new DefaultJsonSerialization();
+        serialization = new DefaultJsonSerialization(new DefaultObjectMapperProvider());
     }
 
     @Test

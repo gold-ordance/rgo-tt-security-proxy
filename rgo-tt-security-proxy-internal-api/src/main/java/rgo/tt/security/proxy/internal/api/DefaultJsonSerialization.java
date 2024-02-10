@@ -1,7 +1,6 @@
 package rgo.tt.security.proxy.internal.api;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import rgo.tt.security.proxy.common.om.DefaultObjectMapperProvider;
 import rgo.tt.security.proxy.common.om.ObjectMapperProvider;
 import rgo.tt.security.proxy.common.om.exception.JsonRuntimeException;
 
@@ -11,10 +10,6 @@ public class DefaultJsonSerialization implements JsonSerialization {
 
     public DefaultJsonSerialization(ObjectMapperProvider provider) {
         this.provider = provider;
-    }
-
-    public DefaultJsonSerialization() {
-        provider = new DefaultObjectMapperProvider();
     }
 
     @Override
