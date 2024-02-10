@@ -19,6 +19,7 @@
 
     <modules>
         <module>rgo-tt-security-proxy-boot</module>
+        <module>rgo-tt-security-proxy-internal-api</module>
     </modules>
 
     <properties>
