@@ -15,11 +15,14 @@ import org.springframework.context.annotation.Configuration;
 import rgo.tt.common.armeria.ProbeService;
 import rgo.tt.common.armeria.headers.HeadersDecorator;
 import rgo.tt.common.armeria.logger.LoggingDecorator;
+import rgo.tt.security.proxy.rest.api.SecurityProxyService;
 
 import java.util.function.Function;
 
 @Configuration
 public class ArmeriaConfig {
+
+    @Autowired private SecurityProxyService proxyService;
 
     @Autowired private ProbeService probeService;
 
@@ -37,6 +40,7 @@ public class ArmeriaConfig {
                 serverBuilder
                         .defaultServiceNaming(ServiceNaming.simpleTypeName())
                         .annotatedService("/internal", probeService)
+                        .annotatedService("/api/v1", proxyService)
                         .serviceUnder("/internal/metrics", PrometheusExpositionService.of(registry.getPrometheusRegistry()))
                         .serviceUnder("/docs", docService())
                         .decorator(loggingDecorator)

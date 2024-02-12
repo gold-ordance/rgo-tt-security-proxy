@@ -5,5 +5,7 @@ import rgo.tt.security.proxy.internal.api.Response;
 
 public interface ServiceAccess {
 
+    String serviceName();
+
     Response call(Request rq);
 }

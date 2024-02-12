@@ -19,6 +19,8 @@
 
     <modules>
         <module>rgo-tt-security-proxy-boot</module>
+        <module>rgo-tt-security-proxy-rest-api</module>
+        <module>rgo-tt-security-proxy-service</module>
         <module>rgo-tt-security-proxy-internal-api</module>
         <module>rgo-tt-security-proxy-common</module>
     </modules>
@@ -35,6 +37,21 @@
             <dependency>
                 <groupId>ru.gold.ordance</groupId>
                 <artifactId>rgo-tt-security-proxy-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.gold.ordance</groupId>
+                <artifactId>rgo-tt-security-proxy-internal-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.gold.ordance</groupId>
+                <artifactId>rgo-tt-security-proxy-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ru.gold.ordance</groupId>
+                <artifactId>rgo-tt-security-proxy-rest-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <!-- self-modules -->

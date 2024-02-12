@@ -10,20 +10,20 @@
         <version>24.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>rgo-tt-security-proxy-boot</artifactId>
+    <artifactId>rgo-tt-security-proxy-rest-api</artifactId>
 
     <dependencies>
         <!-- self-modules -->
         <dependency>
             <groupId>ru.gold.ordance</groupId>
-            <artifactId>rgo-tt-security-proxy-rest-api</artifactId>
+            <artifactId>rgo-tt-security-proxy-service</artifactId>
         </dependency>
         <!-- self-modules -->
 
         <!-- external modules -->
         <dependency>
             <groupId>ru.gold.ordance</groupId>
-            <artifactId>rgo-tt-common-armeria-spring-starter</artifactId>
+            <artifactId>rgo-tt-common-armeria-rest</artifactId>
         </dependency>
         <!-- external modules -->
 
