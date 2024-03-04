@@ -3,6 +3,7 @@ package rgo.tt.security.proxy.service.invoker;
 import org.junit.jupiter.api.Test;
 import rgo.tt.security.proxy.internal.api.Request;
 import rgo.tt.security.proxy.internal.api.Response;
+import rgo.tt.security.proxy.service.exception.ServiceAccessNotFoundException;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ class DefaultServiceAccessProviderTest {
     void get_exception() {
         provider = new DefaultServiceAccessProvider(List.of());
         String serviceName = randomString();
-        assertThatExceptionOfType(DefaultServiceAccessProvider.ServiceAccessNotFoundException.class)
+        assertThatExceptionOfType(ServiceAccessNotFoundException.class)
                 .isThrownBy(() -> provider.get(serviceName));
     }
 }

@@ -1,5 +1,7 @@
 package rgo.tt.security.proxy.service.invoker;
 
+import rgo.tt.security.proxy.service.exception.ServiceAccessNotFoundException;
+
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -22,12 +24,5 @@ public class DefaultServiceAccessProvider implements ServiceAccessProvider {
         }
 
         return access;
-    }
-
-    public static class ServiceAccessNotFoundException extends RuntimeException {
-
-        public ServiceAccessNotFoundException(String message) {
-            super(message);
-        }
     }
 }

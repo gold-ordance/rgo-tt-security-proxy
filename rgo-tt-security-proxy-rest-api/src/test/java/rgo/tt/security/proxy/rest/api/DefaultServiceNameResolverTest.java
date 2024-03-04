@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import rgo.tt.security.proxy.internal.api.Request;
 import rgo.tt.security.proxy.internal.api.RequestMeta;
+import rgo.tt.security.proxy.rest.api.exception.ServiceNameResolverException;
 import rgo.tt.security.proxy.service.invoker.ServiceNameResolver;
 
 import java.util.stream.Stream;
@@ -44,7 +45,7 @@ class DefaultServiceNameResolverTest {
     @Test
     void resolve_exception() {
         Request request = Request.of(randomString(), RequestMeta.of());
-        assertThatExceptionOfType(DefaultServiceNameResolver.ServiceNameResolverException.class)
+        assertThatExceptionOfType(ServiceNameResolverException.class)
                 .isThrownBy(() -> resolver.resolve(request));
     }
 }

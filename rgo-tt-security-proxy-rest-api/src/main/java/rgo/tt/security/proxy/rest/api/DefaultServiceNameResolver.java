@@ -1,6 +1,7 @@
 package rgo.tt.security.proxy.rest.api;
 
 import rgo.tt.security.proxy.internal.api.Request;
+import rgo.tt.security.proxy.rest.api.exception.ServiceNameResolverException;
 import rgo.tt.security.proxy.service.invoker.ServiceNameResolver;
 
 import java.util.regex.Matcher;
@@ -19,12 +20,5 @@ public class DefaultServiceNameResolver implements ServiceNameResolver {
         }
 
         throw new ServiceNameResolverException("Failed to resolve service name for source: " + rq.getSource());
-    }
-
-    public static class ServiceNameResolverException extends RuntimeException {
-
-        public ServiceNameResolverException(String message) {
-            super(message);
-        }
     }
 }
