@@ -20,12 +20,12 @@
         </dependency>
         <!-- self-modules -->
 
-        <!-- armeria -->
+        <!-- external modules -->
         <dependency>
-            <groupId>com.linecorp.armeria</groupId>
-            <artifactId>armeria</artifactId>
+            <groupId>ru.gold.ordance</groupId>
+            <artifactId>rgo-tt-common-utils</artifactId>
         </dependency>
-        <!-- armeria -->
+        <!-- external modules -->
 
         <!-- test -->
         <dependency>
