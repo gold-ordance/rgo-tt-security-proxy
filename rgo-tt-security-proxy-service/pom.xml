@@ -20,6 +20,13 @@
         </dependency>
         <!-- self-modules -->
 
+        <!-- armeria -->
+        <dependency>
+            <groupId>com.linecorp.armeria</groupId>
+            <artifactId>armeria</artifactId>
+        </dependency>
+        <!-- armeria -->
+
         <!-- test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

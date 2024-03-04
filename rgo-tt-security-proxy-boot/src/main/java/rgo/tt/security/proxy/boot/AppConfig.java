@@ -1,15 +1,17 @@
 package rgo.tt.security.proxy.boot;
 
+import com.linecorp.armeria.client.WebClient;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import rgo.tt.security.proxy.boot.properties.ServicesProperties;
 import rgo.tt.security.proxy.common.om.DefaultObjectMapperProvider;
 import rgo.tt.security.proxy.common.om.ObjectMapperProvider;
 import rgo.tt.security.proxy.internal.api.DefaultJsonSerialization;
 import rgo.tt.security.proxy.internal.api.DefaultRequestProxyProcessor;
 import rgo.tt.security.proxy.internal.api.JsonSerialization;
-import rgo.tt.security.proxy.internal.api.Request;
 import rgo.tt.security.proxy.internal.api.RequestProxyProcessor;
-import rgo.tt.security.proxy.internal.api.Response;
+import rgo.tt.security.proxy.internal.api.invoker.DefaultServiceAccessProvider;
 import rgo.tt.security.proxy.internal.api.invoker.DefaultServiceInvoker;
 import rgo.tt.security.proxy.internal.api.invoker.ServiceAccess;
 import rgo.tt.security.proxy.internal.api.invoker.ServiceAccessProvider;
@@ -22,8 +24,12 @@ import rgo.tt.security.proxy.internal.api.verification.RequestVerificationChain;
 import rgo.tt.security.proxy.rest.api.SecurityProxyService;
 import rgo.tt.security.proxy.rest.api.extractor.JsonStatusCodeExtractor;
 import rgo.tt.security.proxy.rest.api.extractor.PathExtractor;
-import rgo.tt.security.proxy.internal.api.invoker.DefaultServiceAccessProvider;
+import rgo.tt.security.proxy.service.ClientFactoryProvider;
+import rgo.tt.security.proxy.service.ClientServiceAccess;
+import rgo.tt.security.proxy.service.DefaultHttpMethodConverter;
 import rgo.tt.security.proxy.service.DefaultServiceNameResolver;
+import rgo.tt.security.proxy.service.HttpMethodConverter;
+import rgo.tt.security.proxy.service.WebClientFactory;
 
 import java.util.List;
 import java.util.Set;
@@ -47,19 +53,32 @@ public class AppConfig {
     }
 
     @Bean
-    public ServiceAccess serviceAccessStub() {
+    public ClientFactoryProvider clientFactoryProvider() {
+        return new ClientFactoryProvider();
+    }
 
-        return new ServiceAccess() {
-            @Override
-            public String serviceName() {
-                return null;
-            }
+    @Bean
+    public WebClientFactory webClientFactory() {
+        return new WebClientFactory(clientFactoryProvider());
+    }
 
-            @Override
-            public Response call(Request rq) {
-                return null;
-            }
-        };
+    @Bean
+    public HttpMethodConverter httpMethodConverter() {
+        return new DefaultHttpMethodConverter();
+    }
+
+    @Bean
+    @ConfigurationProperties("app")
+    public ServicesProperties servicesProperties() {
+        return new ServicesProperties();
+    }
+
+    @Bean
+    public ServiceAccess clientServiceAccess() {
+        var factory = webClientFactory();
+        var properties = servicesProperties();
+        WebClient client = factory.createClient(properties.uri("clients"));
+        return new ClientServiceAccess(client, httpMethodConverter());
     }
 
     @Bean
